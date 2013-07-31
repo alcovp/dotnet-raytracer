@@ -1,0 +1,9 @@
+D:\workspace\C#\RayTracingMethod\Solver\bin\Release\Solver.dll
+D:\workspace\C#\RayTracingMethod\Solver\bin\Release\Solver.pdb
+D:\workspace\C#\RayTracingMethod\Solver\bin\Release\DataStructure.dll
+D:\workspace\C#\RayTracingMethod\Solver\bin\Release\DataStructure.pdb
+D:\workspace\C#\RayTracingMethod\Solver\obj\Release\ResolveAssemblyReference.cache
+D:\workspace\C#\RayTracingMethod\Solver\obj\Release\Solver.dll
+D:\workspace\C#\RayTracingMethod\Solver\obj\Release\Solver.pdb
+D:\workspace\C#\RayTracingMethod\Solver\bin\Release\SceneDefinition.dll
+D:\workspace\C#\RayTracingMethod\Solver\bin\Release\SceneDefinition.pdb

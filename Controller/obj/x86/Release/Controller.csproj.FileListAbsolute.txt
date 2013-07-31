@@ -1,0 +1,15 @@
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\ResolveAssemblyReference.cache
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\Controller.Form1.resources
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\Controller.Properties.Resources.resources
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\GenerateResource.read.1.tlog
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\GenerateResource.write.1.tlog
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\Controller.exe
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\Controller.pdb
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\DataStructure.dll
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\Solver.dll
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\DataStructure.pdb
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\Solver.pdb
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\Controller.exe
+D:\workspace\C#\RayTracingMethod\Controller\obj\x86\Release\Controller.pdb
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\SceneDefinition.dll
+D:\workspace\C#\RayTracingMethod\Controller\bin\Release\SceneDefinition.pdb

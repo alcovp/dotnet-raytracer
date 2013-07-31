@@ -1,0 +1,7 @@
+D:\workspace\C#\RayTracingMethod\SceneDefinition\obj\Release\ResolveAssemblyReference.cache
+D:\workspace\C#\RayTracingMethod\SceneDefinition\bin\Release\SceneDefinition.dll
+D:\workspace\C#\RayTracingMethod\SceneDefinition\bin\Release\SceneDefinition.pdb
+D:\workspace\C#\RayTracingMethod\SceneDefinition\bin\Release\DataStructure.dll
+D:\workspace\C#\RayTracingMethod\SceneDefinition\bin\Release\DataStructure.pdb
+D:\workspace\C#\RayTracingMethod\SceneDefinition\obj\Release\SceneDefinition.dll
+D:\workspace\C#\RayTracingMethod\SceneDefinition\obj\Release\SceneDefinition.pdb

@@ -1,0 +1,5 @@
+D:\workspace\C#\RayTracingMethod\DataStructure\bin\Release\DataStructure.dll
+D:\workspace\C#\RayTracingMethod\DataStructure\bin\Release\DataStructure.pdb
+D:\workspace\C#\RayTracingMethod\DataStructure\obj\Release\ResolveAssemblyReference.cache
+D:\workspace\C#\RayTracingMethod\DataStructure\obj\Release\DataStructure.dll
+D:\workspace\C#\RayTracingMethod\DataStructure\obj\Release\DataStructure.pdb

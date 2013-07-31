@@ -1,0 +1,8 @@
+D:\workspace\C#\RayTracingMethod\TestMath\bin\Debug\TestMath.exe.config
+D:\workspace\C#\RayTracingMethod\TestMath\bin\Debug\TestMath.exe
+D:\workspace\C#\RayTracingMethod\TestMath\bin\Debug\TestMath.pdb
+D:\workspace\C#\RayTracingMethod\TestMath\bin\Debug\DataStructure.dll
+D:\workspace\C#\RayTracingMethod\TestMath\bin\Debug\DataStructure.pdb
+D:\workspace\C#\RayTracingMethod\TestMath\obj\Debug\TestMath.csprojResolveAssemblyReference.cache
+D:\workspace\C#\RayTracingMethod\TestMath\obj\Debug\TestMath.exe
+D:\workspace\C#\RayTracingMethod\TestMath\obj\Debug\TestMath.pdb

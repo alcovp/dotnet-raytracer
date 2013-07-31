@@ -1,0 +1,5 @@
+D:\workspace\C#\RayTracingMethod\Tester\bin\Release\Tester.dll
+D:\workspace\C#\RayTracingMethod\Tester\bin\Release\Tester.pdb
+D:\workspace\C#\RayTracingMethod\Tester\obj\Release\ResolveAssemblyReference.cache
+D:\workspace\C#\RayTracingMethod\Tester\obj\Release\Tester.dll
+D:\workspace\C#\RayTracingMethod\Tester\obj\Release\Tester.pdb

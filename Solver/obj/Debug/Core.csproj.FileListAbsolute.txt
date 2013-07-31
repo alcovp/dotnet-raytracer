@@ -25,3 +25,12 @@ D:\Вова\RayTracingMethod\Solver\bin\Debug\DataStructure.pdb
 D:\Вова\RayTracingMethod\Solver\bin\Debug\SceneDefinition.pdb
 D:\Вова\RayTracingMethod\Solver\obj\Debug\Solver.pdb
 D:\workspace\C#\RayTracingMethod\Solver\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\Solver.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\Solver.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\DataStructure.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\SceneDefinition.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\DataStructure.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\SceneDefinition.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Solver.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Solver.pdb

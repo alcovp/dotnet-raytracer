@@ -19,3 +19,10 @@ D:\Вова\RayTracingMethod\SceneDefinition\obj\Debug\ResolveAssemblyReference.
 D:\Вова\RayTracingMethod\SceneDefinition\obj\Debug\SceneDefinition.dll
 D:\Вова\RayTracingMethod\SceneDefinition\obj\Debug\SceneDefinition.pdb
 D:\workspace\C#\RayTracingMethod\SceneDefinition\obj\Debug\SceneDefinition.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\SceneDefinition.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\SceneDefinition.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\DataStructure.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\DataStructure.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.pdb

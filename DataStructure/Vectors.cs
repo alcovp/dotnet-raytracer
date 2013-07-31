@@ -137,5 +137,15 @@ namespace DataStructure
                 Z = matrix[2][0] * this.X + matrix[2][1] * this.Y + matrix[2][2] * this.Z + matrix[2][3]
             };
         }
+
+        public XYZ RotateX(float angle)
+        {
+            return null;
+        }
+
+        public XYZ RotateY(float angle)
+        {
+            return null;
+        }
     }
 }

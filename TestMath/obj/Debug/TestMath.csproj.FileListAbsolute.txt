@@ -6,3 +6,11 @@ D:\workspace\C#\RayTracingMethod\TestMath\bin\Debug\DataStructure.pdb
 D:\workspace\C#\RayTracingMethod\TestMath\obj\Debug\TestMath.csprojResolveAssemblyReference.cache
 D:\workspace\C#\RayTracingMethod\TestMath\obj\Debug\TestMath.exe
 D:\workspace\C#\RayTracingMethod\TestMath\obj\Debug\TestMath.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\bin\Debug\TestMath.exe.config
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\bin\Debug\TestMath.exe
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\bin\Debug\TestMath.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\bin\Debug\DataStructure.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\bin\Debug\DataStructure.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\obj\Debug\TestMath.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\obj\Debug\TestMath.exe
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\TestMath\obj\Debug\TestMath.pdb

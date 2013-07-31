@@ -43,13 +43,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBoxRealtimeResolution = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPixelSize = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBoxSettings = new System.Windows.Forms.GroupBox();
-            this.textBoxPixelSize = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelCoords = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelBuildTime = new System.Windows.Forms.ToolStripStatusLabel();
@@ -196,6 +196,23 @@
             this.groupBoxRealtimeResolution.TabStop = false;
             this.groupBoxRealtimeResolution.Text = "Realtime run";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Pixel size:";
+            // 
+            // textBoxPixelSize
+            // 
+            this.textBoxPixelSize.Location = new System.Drawing.Point(120, 46);
+            this.textBoxPixelSize.Name = "textBoxPixelSize";
+            this.textBoxPixelSize.Size = new System.Drawing.Size(49, 20);
+            this.textBoxPixelSize.TabIndex = 11;
+            this.textBoxPixelSize.Text = "10";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -229,22 +246,14 @@
             this.groupBoxSettings.TabStop = false;
             this.groupBoxSettings.Text = "Settings";
             // 
-            // textBoxPixelSize
+            // label9
             // 
-            this.textBoxPixelSize.Location = new System.Drawing.Point(120, 46);
-            this.textBoxPixelSize.Name = "textBoxPixelSize";
-            this.textBoxPixelSize.Size = new System.Drawing.Size(49, 20);
-            this.textBoxPixelSize.TabIndex = 11;
-            this.textBoxPixelSize.Text = "10";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Pixel size:";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(13, 202);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(88, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Recursion depth:";
             // 
             // label8
             // 
@@ -254,15 +263,6 @@
             this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 13;
             this.label8.Text = "Antialiasing:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 202);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Recursion depth:";
             // 
             // statusStrip1
             // 
@@ -314,6 +314,7 @@
             this.Text = "Controller";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormController_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxMainResolution.ResumeLayout(false);
             this.groupBoxMainResolution.PerformLayout();

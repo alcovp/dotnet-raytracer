@@ -13,3 +13,8 @@ D:\Вова\RayTracingMethod\DataStructure\obj\Debug\DataStructure.pdb
 D:\Вова\RayTracingMethod\DataStructure\bin\Debug\DataStructure.dll
 D:\Вова\RayTracingMethod\DataStructure\bin\Debug\DataStructure.pdb
 D:\workspace\C#\RayTracingMethod\DataStructure\obj\Debug\DataStructure.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\DataStructure\bin\Debug\DataStructure.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\DataStructure\bin\Debug\DataStructure.pdb
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\DataStructure\obj\Debug\DataStructure.csprojResolveAssemblyReference.cache
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\DataStructure\obj\Debug\DataStructure.dll
+C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\DataStructure\obj\Debug\DataStructure.pdb

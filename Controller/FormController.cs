@@ -23,14 +23,19 @@ namespace Controller
         private XYZ eye_p = new XYZ { X = 0, Y = 0, Z = -9.9 }; // point
         private XYZ view_v = new XYZ { X = 0, Y = 0, Z = 1 }.Normalize(); // unit-vector
         private XYZ up_v = new XYZ { X = 0, Y = 1, Z = 0 }.Normalize(); // unit-vector
+        private bool realTimeOn = false;
         private bool cameraMoveForward = false;
         private bool cameraMoveBackward = false;
         private bool cameraMoveLeft = false;
         private bool cameraMoveRight = false;
         private bool cameraMoveDown = false;
         private bool cameraMoveUp = false;
-        private DateTime lastTimerTick = DateTime.Now;
         private float cameraSpeed = 0.1f;
+        private float cameraRotationSpeed = 1;
+        private Point mouseDefaultLocation = new Point(50, 50);
+        private int mouseDeltaX = 0;
+        private int mouseDeltaY = 0;
+        private DateTime lastTimerTick = DateTime.Now;
         private FormOutput outputForm = null;
 
         public FormController()
@@ -45,10 +50,7 @@ namespace Controller
             outputForm = new FormOutput();
             outputForm.Show();
 
-            if (superThread != null && superThread.IsAlive)
-            {
-                superThread.Abort();
-            }
+            realTimeStop();
             superThread = new Thread(() => SuperMethod(false));
             superThread.Start();
             toolStripProgressBar1.Visible = true;
@@ -56,6 +58,12 @@ namespace Controller
 
         private void realTimeBtn_Click(object sender, EventArgs e)
         {
+            if (!realTimeOn)
+            {
+                Cursor.Hide();
+                Cursor.Position = mouseDefaultLocation;
+                realTimeOn = true;
+            }
             if (superThread != null && superThread.IsAlive)
             {
                 superThread.Abort();
@@ -63,6 +71,19 @@ namespace Controller
             superThread = new Thread(() => SuperMethod(true));
             superThread.Start();
             toolStripProgressBar1.Visible = false;
+        }
+
+        private void realTimeStop()
+        {
+            if (realTimeOn)
+            {
+                Cursor.Show();
+                realTimeOn = false;
+            }
+            if (superThread != null && superThread.IsAlive)
+            {
+                superThread.Abort();
+            }
         }
 
         private unsafe void SuperMethod(bool realTime)
@@ -77,17 +98,17 @@ namespace Controller
             Scene.NewScene();
             //Scene.AddBoundingBox(0, 10, 0, 10, 0, 10, new Material { Color = Color.FromArgb(100, 100, 255) });
             // back
-            //Scene.AddPlain(new XYZ { X = 0, Y = 0, Z = 1 }, -5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
+            Scene.AddPlain(new XYZ { X = 0, Y = 0, Z = 1 }, -5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // face
-            //Scene.AddPlain(new XYZ { X = 0, Y = 0, Z = 1 }, 10, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
+            Scene.AddPlain(new XYZ { X = 0, Y = 0, Z = 1 }, 10, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // bottom
             Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // top
-            //Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 1 });
+            Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 1 });
             // left
-            //Scene.AddPlain(new XYZ { X = 1, Y = 0, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
+            Scene.AddPlain(new XYZ { X = 1, Y = 0, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // right
-            //Scene.AddPlain(new XYZ { X = 1, Y = 0, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 1 });
+            Scene.AddPlain(new XYZ { X = 1, Y = 0, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 1 });
 
             //Scene.AddSphere(new XYZ { X = 5, Y = 0, Z = 10 }, 5, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0 });
             //Scene.AddSphere(new XYZ { X = 8, Y = 2, Z = 7 }, 2, new Material { Color = Color.FromArgb(255, 255, 0), Reflectivity = 0 });
@@ -117,10 +138,9 @@ namespace Controller
 
             //Scene.AddSphere(new XYZ { X = -2.5, Y = 0, Z = -10 }, 2, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
             //Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, 3, new Material { Color = Color.FromArgb(0, 100, 200), Refractivity = 0.8, RefractiveIndex = 1.33 });
-            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = -4 }, 1, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
-            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = -3 }, 1, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
-            Scene.AddSphere2(new XYZ { X = 0.0, Y = 0, Z = -2 }, 1, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
-            Scene.AddSphere2(new XYZ { X = 0.0, Y = 0, Z = -1 }, 1, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
+            Scene.AddSphere2(new XYZ { X = -2, Y = 0, Z = 0 }, 1, new Material { Color = Color.FromArgb(0, 0, 255), Reflectivity = 1, Refractivity = 0, RefractiveIndex = 1.52 });
+            Scene.AddSphere2(new XYZ { X = 2, Y = 0, Z = 0 }, 1, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0, Refractivity = 0.7, RefractiveIndex = 1.52 });
+            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 3, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 1, Refractivity = 0.7, RefractiveIndex = 1.52 });
 
             // primary light
             Scene.AddLight(new XYZ { X = -4.9, Y = 4.9, Z = -4.9 }, 14, Color.FromArgb(255, 255, 255), 0.2);
@@ -292,6 +312,9 @@ namespace Controller
                 case Keys.Space:
                     cameraMoveUp = true;
                     break;
+                case Keys.Escape:
+                    realTimeStop();
+                    break;
             }
         }
 
@@ -324,32 +347,35 @@ namespace Controller
         {
             var newTick = DateTime.Now;
             var time = newTick - lastTimerTick;
-            var left_v = view_v.OuterProduct(up_v).Normalize();
-            if (cameraMoveForward)
+            if (realTimeOn)
             {
-                eye_p = eye_p.Add(view_v.Product(cameraSpeed)); // умножать на промежуток времени
+                var left_v = view_v.OuterProduct(up_v).Normalize();
+                if (cameraMoveForward)
+                {
+                    eye_p = eye_p.Add(view_v.Product(cameraSpeed)); // умножать на промежуток времени
+                }
+                if (cameraMoveBackward)
+                {
+                    eye_p = eye_p.Substract(view_v.Product(cameraSpeed));
+                }
+                if (cameraMoveLeft)
+                {
+                    eye_p = eye_p.Add(left_v.Product(cameraSpeed));
+                }
+                if (cameraMoveRight)
+                {
+                    eye_p = eye_p.Substract(left_v.Product(cameraSpeed));
+                }
+                if (cameraMoveUp)
+                {
+                    eye_p = eye_p.Add(up_v.Product(cameraSpeed));
+                }
+                if (cameraMoveDown)
+                {
+                    eye_p = eye_p.Substract(up_v.Product(cameraSpeed));
+                }
+                toolStripStatusLabelCoords.Text = "x:" + eye_p.X.ToString("F1") + " y:" + eye_p.Y.ToString("F1") + " z:" + eye_p.Z.ToString("F1");
             }
-            if (cameraMoveBackward)
-            {
-                eye_p = eye_p.Substract(view_v.Product(cameraSpeed));
-            }
-            if (cameraMoveLeft)
-            {
-                eye_p = eye_p.Add(left_v.Product(cameraSpeed));
-            }
-            if (cameraMoveRight)
-            {
-                eye_p = eye_p.Substract(left_v.Product(cameraSpeed));
-            }
-            if (cameraMoveUp)
-            {
-                eye_p = eye_p.Add(up_v.Product(cameraSpeed));
-            }
-            if (cameraMoveDown)
-            {
-                eye_p = eye_p.Substract(up_v.Product(cameraSpeed));
-            }
-            toolStripStatusLabelCoords.Text = "x:" + eye_p.X.ToString("F1") + " y:" + eye_p.Y.ToString("F1") + " z:" + eye_p.Z.ToString("F1");
             if (toolStripProgressBar1.Visible)
             {
                 if (Canvas.allPixelsCount != 0)
@@ -380,6 +406,17 @@ namespace Controller
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormController_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (realTimeOn)
+            {
+                //var deltaX = e.X - mouseDefaultLocation.X;
+                //var deltaY = e.Y - mouseDefaultLocation.Y;
+                //view_v = view_v.RotateX(deltaX * cameraRotationSpeed);
+                //view_v = view_v.RotateX(deltaX * cameraRotationSpeed);
+            }
         }
     }
 }

@@ -24,7 +24,6 @@ namespace DataStructure
 
             XYZ reflectedRay = null;
             XYZ refractedRay = null;
-            var left = ray_v.OuterProduct(Normal);
             if (Material.Reflectivity > 0)
             {
                 reflectedRay = ray_v.Substract(Normal.Product(2).Product(ray_v.ScalarProduct(Normal))).Normalize();
@@ -42,6 +41,7 @@ namespace DataStructure
                     var sineSqr = Math.Pow(n1 / n2, 2) * (1 - Math.Pow(cosine, 2));
                     if (Math.Sqrt(sineSqr) <= n2 / n1)
                     {
+                        // TODO 
                         refractedRay = ray_v.Product(n1 / n2).Add(Normal.Product((n1 / n2) * cosine + Math.Sqrt(1 - sineSqr))).Normalize();
                     }
                     else

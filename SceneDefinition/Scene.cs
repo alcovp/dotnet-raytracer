@@ -20,7 +20,7 @@ namespace SceneDefinition
 
         public static void AddQuadricSurface(double[][] quadricFormMatrix, double[] linearFormVector, double absoluteTerm, Material material)
         {
-            objects.Add(new QuadricSurface
+            objects.Add(new QuadricSurfaceOld
             {
                 QuadricFormMatrix = quadricFormMatrix,
                 LinearFormVector = linearFormVector,
@@ -82,7 +82,7 @@ namespace SceneDefinition
                 new double[] { 0, 0, 0, 1}
             };
 
-            objects.Add(new TestMatrix
+            objects.Add(new QuadricSurface
             {
                 Material = material,
                 AbsoluteTerm = absoluteTerm,

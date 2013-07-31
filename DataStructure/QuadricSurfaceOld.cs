@@ -5,29 +5,35 @@ using System.Text;
 
 namespace DataStructure
 {
-    public class TestMatrix : Entity, IContainer
+    public class QuadricSurfaceOld : Entity, IContainer
     {
         public double[][] QuadricFormMatrix { get; set; }
         public double[] LinearFormVector { get; set; }
         public double AbsoluteTerm { get; set; }
         public virtual Material Material { get; set; }
-        public double[][] Transformation { get; set; }
-        public double[][] Inverse { get; set; }
 
         public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1)
         {
-            var eye = eye_p.Transform(Inverse);
-            var ray = ray_v.Transform(Inverse);
+            //test 
+            var a11 = QuadricFormMatrix[0][0];
+            var a12 = QuadricFormMatrix[0][1];
+            var a13 = QuadricFormMatrix[0][2];
+            var a22 = QuadricFormMatrix[1][1];
+            var a23 = QuadricFormMatrix[1][2];
+            var a33 = QuadricFormMatrix[2][2];
+            var b1 = LinearFormVector[0];
+            var b2 = LinearFormVector[1];
+            var b3 = LinearFormVector[2];
             // a*x^2 + 2*b*x + c = 0
             // возможна оптимизация: считать только 1 раз все это для одной итерации
-            var a = Phi(ray.X, ray.Y, ray.Z);
-            var f1 = F1(eye.X, eye.Y, eye.Z);
-            var f2 = F2(eye.X, eye.Y, eye.Z);
-            var f3 = F3(eye.X, eye.Y, eye.Z);
-            var b = f1 * ray.X
-                + f2 * ray.Y
-                + f3 * ray.Z;
-            var c = F(eye.X, eye.Y, eye.Z);
+            var a = Phi(ray_v.X, ray_v.Y, ray_v.Z);
+            var f1 = F1(eye_p.X, eye_p.Y, eye_p.Z);
+            var f2 = F2(eye_p.X, eye_p.Y, eye_p.Z);
+            var f3 = F3(eye_p.X, eye_p.Y, eye_p.Z);
+            var b = f1 * ray_v.X
+                + f2 * ray_v.Y
+                + f3 * ray_v.Z;
+            var c = F(eye_p.X, eye_p.Y, eye_p.Z);
             var discriminant = Math.Pow(b * 2, 2) - 4 * a * c;
             double x1;
             double x2;
@@ -43,22 +49,22 @@ namespace DataStructure
                     if (x1 > 0 && x2 > 0)
                     {
                         // переписать это в векторных операциях XYZ
-                        p1 = new XYZ { X = eye.X + ray.X * x1, Y = eye.Y + ray.Y * x1, Z = eye.Z + ray.Z * x1 };
-                        p2 = new XYZ { X = eye.X + ray.X * x2, Y = eye.Y + ray.Y * x2, Z = eye.Z + ray.Z * x2 };
+                        p1 = new XYZ { X = eye_p.X + ray_v.X * x1, Y = eye_p.Y + ray_v.Y * x1, Z = eye_p.Z + ray_v.Z * x1 };
+                        p2 = new XYZ { X = eye_p.X + ray_v.X * x2, Y = eye_p.Y + ray_v.Y * x2, Z = eye_p.Z + ray_v.Z * x2 };
                         // выберем точку первого пересечения (ближайшая к eye_p)
-                        var p1Distance = p1.Substract(eye).ScalarOfVector();
-                        var p2Distance = p2.Substract(eye).ScalarOfVector();
+                        var p1Distance = p1.Substract(eye_p).ScalarOfVector();
+                        var p2Distance = p2.Substract(eye_p).ScalarOfVector();
                         intersectionPoint = p1Distance < p2Distance ? p1 : p2;
                     }
                     else
                     {
                         if (x1 > 0)
                         {
-                            intersectionPoint = new XYZ { X = eye.X + ray.X * x1, Y = eye.Y + ray.Y * x1, Z = eye.Z + ray.Z * x1 };
+                            intersectionPoint = new XYZ { X = eye_p.X + ray_v.X * x1, Y = eye_p.Y + ray_v.Y * x1, Z = eye_p.Z + ray_v.Z * x1 };
                         }
                         if (x2 > 0)
                         {
-                            intersectionPoint = new XYZ { X = eye.X + ray.X * x2, Y = eye.Y + ray.Y * x2, Z = eye.Z + ray.Z * x2 };
+                            intersectionPoint = new XYZ { X = eye_p.X + ray_v.X * x2, Y = eye_p.Y + ray_v.Y * x2, Z = eye_p.Z + ray_v.Z * x2 };
                         }
                     }
                     XYZ normal = null;
@@ -71,7 +77,7 @@ namespace DataStructure
                         // найдем направление отраженного луча
                         if (Material.Reflectivity > 0)
                         {
-                            reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal))).Normalize();
+                            reflectedRay = ray_v.Substract(normal.Product(2).Product(ray_v.ScalarProduct(normal))).Normalize();
                         }
                         // найдем направление преломленного луча
                         if (Material.Refractivity > 0)
@@ -79,15 +85,15 @@ namespace DataStructure
                             var n2 = Material.RefractiveIndex;
                             if (n1 == n2)
                             {
-                                refractedRay = ray;
+                                refractedRay = ray_v;
                             }
                             else
                             {
-                                var cosine = ray.ScalarProduct(normal);
+                                var cosine = ray_v.ScalarProduct(normal);
                                 var sineSqr = Math.Pow(n1 / n2, 2) * (1 - Math.Pow(cosine, 2));
                                 if (Math.Sqrt(sineSqr) <= n2 / n1)
                                 {
-                                    refractedRay = ray.Product(n1 / n2).Add(normal.Product((n1 / n2) * cosine + Math.Sqrt(1 - sineSqr))).Normalize();
+                                    refractedRay = ray_v.Product(n1 / n2).Add(normal.Product((n1 / n2) * cosine + Math.Sqrt(1 - sineSqr))).Normalize();
                                 }
                                 else
                                 {
@@ -119,7 +125,7 @@ namespace DataStructure
 
                     return new Result
                     {
-                        Point = intersectionPoint.Transform(Transformation),
+                        Point = intersectionPoint,
                         Color = color,
                         Material = Material,
                         ReflectedRay = reflectedRay,

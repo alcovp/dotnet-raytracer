@@ -94,6 +94,20 @@ namespace DataStructure
 
                                 }
                             }
+                            //else
+                            //{
+                            //    var I = ray.Negate();
+                            //    var nT = n1 / n2;
+                            //    var sqrt = 1 - nT * nT * (1 - Math.Pow(normal.ScalarProduct(I), 2));
+                            //    if (sqrt < 0)
+                            //    {
+
+                            //    }
+                            //    else
+                            //    {
+                            //        refractedRay = normal.Product(nT * (normal.ScalarProduct(I)) - Math.Sqrt(sqrt)).Substract(I.Product(nT)).Negate().Normalize();
+                            //    }
+                            //}
                         }
                     }
                     var color = Material.Color;

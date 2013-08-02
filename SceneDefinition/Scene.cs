@@ -43,9 +43,9 @@ namespace SceneDefinition
             });
         }
 
-        public static void AddPlain(XYZ normal_v, double d, Material material)
+        public static void AddPlane(XYZ normal_v, double d, Material material)
         {
-            objects.Add(new Plain
+            objects.Add(new Plane
             {
                 Normal = normal_v,
                 D = d,

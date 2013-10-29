@@ -79,6 +79,7 @@
             // 
             // Solve_button
             // 
+            this.Solve_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Solve_button.Location = new System.Drawing.Point(0, 232);
             this.Solve_button.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
             this.Solve_button.Name = "Solve_button";
@@ -103,7 +104,8 @@
             // 
             // realTimeBtn
             // 
-            this.realTimeBtn.BackColor = System.Drawing.Color.Firebrick;
+            this.realTimeBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.realTimeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.realTimeBtn.Location = new System.Drawing.Point(98, 232);
             this.realTimeBtn.Name = "realTimeBtn";
             this.realTimeBtn.Size = new System.Drawing.Size(97, 35);

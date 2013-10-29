@@ -126,7 +126,7 @@ namespace Solver
                             }
                         }
                     }
-                    newIllumination.Abmient = light.Abmient;
+                    //newIllumination.Abmient = light.Abmient;
                     // если точка полностью затенена
                     if (fullShadowed)
                     {
@@ -139,13 +139,13 @@ namespace Solver
                         if (softShadowed)
                         {
                             newIllumination.Diffuse = light.GetDiffuse(result.Point, result.Normal, eye_p) * totalRefractivity;
-                            newIllumination.Specular = light.GetSpecular(result.Point, result.Normal, eye_p, result.ReflectedRay) * totalRefractivity;
+                            newIllumination.Specular = light.GetSpecular(result.Point, result.ReflectedRay, 5) * totalRefractivity;
                         }
                         else
                         {
                             // если между точкой и источником света нет препятствий
                             newIllumination.Diffuse = light.GetDiffuse(result.Point, result.Normal, eye_p);
-                            newIllumination.Specular = light.GetSpecular(result.Point, result.Normal, eye_p, result.ReflectedRay);
+                            newIllumination.Specular = light.GetSpecular(result.Point, result.ReflectedRay, 5);
                         }
                     }
                     illumination.Add(newIllumination);

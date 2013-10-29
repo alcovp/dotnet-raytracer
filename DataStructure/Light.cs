@@ -41,19 +41,20 @@ namespace DataStructure
             }
         }
 
-        public double GetSpecular(XYZ point, XYZ normal, XYZ eye_p, XYZ reflectedRay)
+        public double GetSpecular(XYZ point, XYZ reflectedRay, double exponent)
         {
             // check for distance 
             // TODO не работает
             var distance = Center.Substract(point).ScalarOfVector();
-            if (Weight - distance <= 0 || reflectedRay == null)
+            if (reflectedRay == null)
             {
                 return 0;
             }
             else
             {
                 var lightToPoint = Center.Substract(point).Normalize();
-                var lightFactor = lightToPoint.ScalarProduct(reflectedRay);
+                //var lightFactor = lightToPoint.ScalarProduct(reflectedRay);
+                var lightFactor = Math.Pow(lightToPoint.ScalarProduct(reflectedRay), exponent);
 
                 if (lightFactor > 1)
                 {

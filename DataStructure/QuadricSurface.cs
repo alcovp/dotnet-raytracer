@@ -61,13 +61,15 @@ namespace DataStructure
                             intersectionPoint = new XYZ { X = eye.X + ray.X * x2, Y = eye.Y + ray.Y * x2, Z = eye.Z + ray.Z * x2 };
                         }
                     }
+                    intersectionPoint = intersectionPoint.Transform(Transformation);
                     XYZ normal = null;
                     XYZ reflectedRay = null;
                     XYZ refractedRay = null;
                     // найдем нормаль в точке пересечения
                     if (Material.Reflectivity > 0 || Material.Refractivity > 0)
                     {
-                        normal = new XYZ { X = f1 * -2, Y = f2 * -2, Z = 1 }.Normalize();
+                        normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
+                        //normal = new XYZ { X = f1 * -2, Y = f2 * -2, Z = 1 }.Normalize();
                         // найдем направление отраженного луча
                         if (Material.Reflectivity > 0)
                         {
@@ -133,7 +135,7 @@ namespace DataStructure
 
                     return new Result
                     {
-                        Point = intersectionPoint.Transform(Transformation),
+                        Point = intersectionPoint,
                         Color = color,
                         Material = Material,
                         ReflectedRay = reflectedRay,

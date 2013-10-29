@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormController));
             this.xResolution_textBox = new System.Windows.Forms.TextBox();
             this.yResolution_textBox = new System.Windows.Forms.TextBox();
             this.Solve_button = new System.Windows.Forms.Button();
@@ -310,6 +311,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.realTimeBtn);
             this.Controls.Add(this.Solve_button);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "FormController";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

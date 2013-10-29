@@ -3,3 +3,8 @@ D:\workspace\C#\RayTracingMethod\Tester\bin\Debug\Tester.pdb
 D:\workspace\C#\RayTracingMethod\Tester\obj\Debug\Tester.dll
 D:\workspace\C#\RayTracingMethod\Tester\obj\Debug\Tester.pdb
 D:\workspace\C#\RayTracingMethod\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Tester\bin\Debug\Tester.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Tester\bin\Debug\Tester.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Tester\obj\Debug\Tester.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Tester\obj\Debug\Tester.pdb

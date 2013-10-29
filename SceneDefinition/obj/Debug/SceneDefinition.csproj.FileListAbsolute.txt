@@ -26,3 +26,10 @@ C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\
 C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.csprojResolveAssemblyReference.cache
 C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.dll
 C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\SceneDefinition.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\SceneDefinition.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\DataStructure.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\bin\Debug\DataStructure.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.csprojResolveAssemblyReference.cache
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\SceneDefinition\obj\Debug\SceneDefinition.pdb

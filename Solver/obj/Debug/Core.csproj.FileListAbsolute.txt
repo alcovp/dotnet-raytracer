@@ -34,3 +34,12 @@ C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug
 C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Core.csprojResolveAssemblyReference.cache
 C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Solver.dll
 C:\Users\Пучковский\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Solver.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\Solver.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\Solver.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\DataStructure.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\SceneDefinition.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\DataStructure.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\bin\Debug\SceneDefinition.pdb
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Solver.dll
+C:\Users\alco\Documents\GitHub\dotnet-raytracer\Solver\obj\Debug\Solver.pdb

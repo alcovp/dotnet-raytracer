@@ -11,7 +11,7 @@ namespace DataStructure
         public double D { get; set; }
         public virtual Material Material { get; set; }
 
-        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1)
+        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1, int recursion)
         {
             XYZ intersectionPoint = null;
             var t = -(eye_p.ScalarProduct(Normal) + D) / (ray_v.ScalarProduct(Normal));

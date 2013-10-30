@@ -16,7 +16,7 @@ namespace DataStructure
         public double Back { get; set; }
         public virtual Material Material { get; set; }
 
-        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1)
+        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1, int recursion)
         {
             XYZ intersectionPoint = new XYZ { X = 0, Y = 0, Z = 0 };
             XYZ normal_v = null;

@@ -104,11 +104,11 @@ namespace Controller
             // bottom
             Scene.AddPlane(new XYZ { X = 0, Y = 1, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // top
-            Scene.AddPlane(new XYZ { X = 0, Y = 1, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 1 });
+            Scene.AddPlane(new XYZ { X = 0, Y = 1, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 0 });
             // left
             Scene.AddPlane(new XYZ { X = 1, Y = 0, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // right
-            Scene.AddPlane(new XYZ { X = 1, Y = 0, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 1 });
+            Scene.AddPlane(new XYZ { X = 1, Y = 0, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 0 });
 
             //Scene.AddSphere(new XYZ { X = 5, Y = 0, Z = 10 }, 5, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0 });
             //Scene.AddSphere(new XYZ { X = 8, Y = 2, Z = 7 }, 2, new Material { Color = Color.FromArgb(255, 255, 0), Reflectivity = 0 });
@@ -139,6 +139,7 @@ namespace Controller
             //Scene.AddSphere(new XYZ { X = -2.5, Y = 0, Z = -10 }, 2, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
             //Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, 3, new Material { Color = Color.FromArgb(0, 100, 200), Refractivity = 0.8, RefractiveIndex = 1.33 });
             Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 1, Refractivity = 0, RefractiveIndex = 1.52 });
+            Scene.AddSphere2(new XYZ { X = 3, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(255, 0, 0), Reflectivity = 1, Refractivity = 0, RefractiveIndex = 1.52 });
             //Scene.AddSphere2(new XYZ { X = 2, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0, Refractivity = 0.7, RefractiveIndex = 1.52 });
             //Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 3, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 1, Refractivity = 0.7, RefractiveIndex = 1.52 });
 

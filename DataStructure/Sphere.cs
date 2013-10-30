@@ -50,7 +50,7 @@ namespace DataStructure
             }
         }
 
-        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1)
+        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1, int recursion)
         {
             var normal = eye_p.Substract(Center).Normalize();
             var intersectionPoint = CheckForIntersection(eye_p, ray_v);

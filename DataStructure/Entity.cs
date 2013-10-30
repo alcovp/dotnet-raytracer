@@ -8,6 +8,6 @@ namespace DataStructure
 {
     public abstract class Entity : IIntersectable
     {
-        public abstract Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1);
+        public abstract Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1, int recursion);
     }
 }

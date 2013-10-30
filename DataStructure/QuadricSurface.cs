@@ -14,7 +14,7 @@ namespace DataStructure
         public double[][] Transformation { get; set; }
         public double[][] Inverse { get; set; }
 
-        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1)
+        public override Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1, int recursion)
         {
             var eye = eye_p.Transform(Inverse);
             var ray = ray_v;
@@ -68,12 +68,23 @@ namespace DataStructure
                     // найдем нормаль в точке пересечения
                     if (Material.Reflectivity > 0 || Material.Refractivity > 0)
                     {
-                        normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
+                        //normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
+                        normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Z = F3(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2 }.Normalize();
                         //normal = new XYZ { X = f1 * -2, Y = f2 * -2, Z = 1 }.Normalize();
                         // найдем направление отраженного луча
                         if (Material.Reflectivity > 0)
                         {
-                            reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal))).Normalize();
+                            //reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal))).Normalize();
+                            //http://graphics.stanford.edu/courses/cs148-10-summer/docs/2006--degreve--reflection_refraction.pdf
+                            var x = ray.ScalarProduct(normal);
+                            if (x >= 0)
+                            {
+                                
+                            }
+                            else
+                            {
+                            }
+                            reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal)));
                         }
                         // найдем направление преломленного луча
                         if (Material.Refractivity > 0)
@@ -132,6 +143,23 @@ namespace DataStructure
                     //    z = z1.Division(z0);
                     //    color = Material.Texture.GetPixel((int)(z.A + Material.Texture.Width / 2), (int)(z.B + Material.Texture.Height / 2));
                     //}
+
+                    if (recursion == 0)
+                    {
+
+                    }
+                    if (recursion == 1)
+                    {
+
+                    }
+                    if (recursion == 2)
+                    {
+
+                    }
+                    if (recursion == 3)
+                    {
+
+                    }
 
                     return new Result
                     {

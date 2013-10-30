@@ -28,7 +28,7 @@ namespace Solver
             foreach (var obj in Scene.objects)
             {
                 // проверяем, не пересекается ли текущий луч с ним
-                var nextResult = obj.GetIntersectionResult(eye_p, ray_v, n1);
+                var nextResult = obj.GetIntersectionResult(eye_p, ray_v, n1, recursion);
                 if (nextResult != null)
                 {
                     
@@ -104,7 +104,7 @@ namespace Solver
                     // проверим каждый объект на следующие случаи
                     foreach (var obj in Scene.objects)
                     {
-                        var possibleBlockingPoint = obj.GetIntersectionResult(result.Point.Add(directionToLight.Product(0.001)), directionToLight, n1);
+                        var possibleBlockingPoint = obj.GetIntersectionResult(result.Point.Add(directionToLight.Product(0.001)), directionToLight, n1, recursion);
                         // если полностью прозрачный - не считать затенение
                         if (possibleBlockingPoint != null && possibleBlockingPoint.Material.Refractivity != 1)
                         {
@@ -126,7 +126,7 @@ namespace Solver
                             }
                         }
                     }
-                    //newIllumination.Abmient = light.Abmient;
+                    newIllumination.Abmient = light.Abmient;
                     // если точка полностью затенена
                     if (fullShadowed)
                     {

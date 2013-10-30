@@ -8,6 +8,6 @@ namespace DataStructure
 {
     public interface IIntersectable
     {
-        Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1);
+        Result GetIntersectionResult(XYZ eye_p, XYZ ray_v, double n1, int recursion);
     }
 }

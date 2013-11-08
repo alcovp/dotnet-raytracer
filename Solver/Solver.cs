@@ -194,34 +194,19 @@ namespace Solver
                 // смешивение состовляющих цвета конечного пикселя
                 if (reflectedPixel != null && refractedPixel != null)
                 {
-                    // stub for mixing colors. now it always mixes 1:1:1
-                    var newColor = Color.FromArgb(
-                        (result.Color.R + reflectedPixel.Color.R + refractedPixel.Color.R) / 3,
-                        (result.Color.G + reflectedPixel.Color.G + refractedPixel.Color.G) / 3,
-                        (result.Color.B + reflectedPixel.Color.B + refractedPixel.Color.B) / 3
-                        );
+                    var newColor = MixColors(result.Color, refractedPixel.Color, reflectedPixel.Color, result.Material.Refractivity, result.Material.Reflectivity);
                     return new Pixel { Color = newColor, X = x, Y = y };
                 }
                 // случай без преломления
                 else if (reflectedPixel != null)
                 {
-                    // stub for mixing colors. now it always mixes 1:1
-                    var newColor = Color.FromArgb(
-                        (result.Color.R + reflectedPixel.Color.R) / 2,
-                        (result.Color.G + reflectedPixel.Color.G) / 2,
-                        (result.Color.B + reflectedPixel.Color.B) / 2
-                        );
+                    var newColor = MixColors(result.Color, reflectedPixel.Color, result.Material.Reflectivity);
                     return new Pixel { Color = newColor, X = x, Y = y };
                 }
                 // случай без отражения
                 else if (refractedPixel != null)
                 {
-                    // stub for mixing colors. now it always mixes 1:1
-                    var newColor = Color.FromArgb(
-                        (result.Color.R + refractedPixel.Color.R) / 2,
-                        (result.Color.G + refractedPixel.Color.G) / 2,
-                        (result.Color.B + refractedPixel.Color.B) / 2
-                        );
+                    var newColor = MixColors(result.Color, refractedPixel.Color, result.Material.Refractivity);
                     return new Pixel { Color = newColor, X = x, Y = y };
                 }
                 else
@@ -230,6 +215,62 @@ namespace Solver
                 }
             }
             #endregion
+        }
+
+        private static Color MixColors(Color main, Color refracted, Color reflected, double refractivity, double reflectivity)
+        {
+            if (refractivity + reflectivity > 1)
+            {
+                double factor = refractivity + reflectivity / 1;
+                refractivity /= factor;
+                reflectivity /= factor;
+            }
+            double mainDeposit = 1 - refractivity - reflectivity;
+            if (mainDeposit < 0)
+            {
+                mainDeposit = 0;
+            }
+            double R = (double)main.R * mainDeposit + (double)refracted.R * refractivity + (double)reflected.R * reflectivity;
+            double G = (double)main.G * mainDeposit + (double)refracted.G * refractivity + (double)reflected.G * reflectivity;
+            double B = (double)main.B * mainDeposit + (double)refracted.B * refractivity + (double)reflected.B * reflectivity;
+            return Color.FromArgb(NormalizeColor(R), NormalizeColor(G), NormalizeColor(B));
+        }
+
+        private static Color MixColors(Color main, Color secondaryColor,  double secondaryDeposit)
+        {
+            if (secondaryDeposit > 1)
+            {
+                secondaryDeposit = 1;
+            }
+            double mainDeposit = 1 - secondaryDeposit;
+            if (mainDeposit < 0)
+            {
+                mainDeposit = 0;
+            }
+            double R = (double)main.R * mainDeposit + (double)secondaryColor.R * secondaryDeposit;
+            double G = (double)main.G * mainDeposit + (double)secondaryColor.G * secondaryDeposit;
+            double B = (double)main.B * mainDeposit + (double)secondaryColor.B * secondaryDeposit;
+            return Color.FromArgb(NormalizeColor(R), NormalizeColor(G), NormalizeColor(B));
+        }
+
+        private static byte NormalizeColor(double component)
+        {
+            if (component > 260)
+            {
+                throw new Exception();
+            }
+            if (component < 0)
+            {
+                return 0;
+            }
+            else if (component > 255)
+            {
+                return 255;
+            }
+            else
+            {
+                return Convert.ToByte(component);
+            }
         }
     }
 }

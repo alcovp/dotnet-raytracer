@@ -61,15 +61,15 @@ namespace DataStructure
                             intersectionPoint = new XYZ { X = eye.X + ray.X * x2, Y = eye.Y + ray.Y * x2, Z = eye.Z + ray.Z * x2 };
                         }
                     }
-                    intersectionPoint = intersectionPoint.Transform(Transformation);
                     XYZ normal = null;
                     XYZ reflectedRay = null;
                     XYZ refractedRay = null;
                     // найдем нормаль в точке пересечения
                     if (Material.Reflectivity > 0 || Material.Refractivity > 0)
                     {
-                        //normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
-                        normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Z = F3(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2 }.Normalize();
+                        normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
+                        var normal1 = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Z = F3(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2 }.Normalize();
+                        
                         //normal = new XYZ { X = f1 * -2, Y = f2 * -2, Z = 1 }.Normalize();
                         // найдем направление отраженного луча
                         if (Material.Reflectivity > 0)
@@ -79,10 +79,11 @@ namespace DataStructure
                             var x = ray.ScalarProduct(normal);
                             if (x >= 0)
                             {
-                                
+
                             }
                             else
                             {
+
                             }
                             reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal)));
                         }
@@ -144,23 +145,7 @@ namespace DataStructure
                     //    color = Material.Texture.GetPixel((int)(z.A + Material.Texture.Width / 2), (int)(z.B + Material.Texture.Height / 2));
                     //}
 
-                    if (recursion == 0)
-                    {
-
-                    }
-                    if (recursion == 1)
-                    {
-
-                    }
-                    if (recursion == 2)
-                    {
-
-                    }
-                    if (recursion == 3)
-                    {
-
-                    }
-
+                    intersectionPoint = intersectionPoint.Transform(Transformation);
                     return new Result
                     {
                         Point = intersectionPoint,

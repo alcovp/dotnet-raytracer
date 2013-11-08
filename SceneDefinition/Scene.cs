@@ -24,9 +24,9 @@ namespace SceneDefinition
             {
                 QuadricFormMatrix = quadricFormMatrix,
                 LinearFormVector = linearFormVector,
-                AbsoluteTerm = absoluteTerm, 
+                AbsoluteTerm = absoluteTerm,
                 Material = material
-            }); 
+            });
         }
 
         public static void AddBoundingBox(double left_v, double right, double bottom, double top, double face, double back, Material material)
@@ -76,10 +76,10 @@ namespace SceneDefinition
 
             double[][] transformation = new double[][]
             {
-                new double[] { radius, 0, 0, center.X},
-                new double[] { 0, radius, 0, center.Y},
-                new double[] { 0, 0, radius, center.Z},
-                new double[] { 0, 0, 0, 1}
+                new double[] { radius, 0, 0, center.X },
+                new double[] { 0, radius, 0, center.Y },
+                new double[] { 0, 0, radius, center.Z },
+                new double[] { 0, 0, 0, 1 }
             };
 
             objects.Add(new QuadricSurface

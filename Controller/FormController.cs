@@ -32,7 +32,7 @@ namespace Controller
         private bool cameraMoveUp = false;
         private float cameraSpeed = 0.1f;
         private float cameraRotationSpeed = 1;
-        private Point mouseDefaultLocation = new Point(50, 50);
+        private Point mouseDefaultLocation = new Point(500, 500);
         private int mouseDeltaX = 0;
         private int mouseDeltaY = 0;
         private DateTime lastTimerTick = DateTime.Now;
@@ -98,17 +98,17 @@ namespace Controller
             Scene.NewScene();
             //Scene.AddBoundingBox(0, 10, 0, 10, 0, 10, new Material { Color = Color.FromArgb(100, 100, 255) });
             // back
-            Scene.AddPlane(new XYZ { X = 0, Y = 0, Z = 1 }, -5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
+            Scene.AddPlane(new XYZ { X = 0, Y = 0, Z = 1 }, -5, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0 });
             // face
             Scene.AddPlane(new XYZ { X = 0, Y = 0, Z = 1 }, 10, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // bottom
             Scene.AddPlane(new XYZ { X = 0, Y = 1, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // top
-            Scene.AddPlane(new XYZ { X = 0, Y = 1, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 0 });
+            Scene.AddPlane(new XYZ { X = 0, Y = 1, Z = 0 }, -5, new Material { Color = Color.FromArgb(255, 0, 0), Reflectivity = 0 });
             // left
             Scene.AddPlane(new XYZ { X = 1, Y = 0, Z = 0 }, 5, new Material { Color = Color.FromArgb(100, 100, 255), Reflectivity = 0 });
             // right
-            Scene.AddPlane(new XYZ { X = 1, Y = 0, Z = 0 }, -5, new Material { Color = Color.FromArgb(200, 200, 255), Reflectivity = 0 });
+            Scene.AddPlane(new XYZ { X = 1, Y = 0, Z = 0 }, -5, new Material { Color = Color.FromArgb(255, 0, 0), Reflectivity = 0 });
 
             //Scene.AddSphere(new XYZ { X = 5, Y = 0, Z = 10 }, 5, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0 });
             //Scene.AddSphere(new XYZ { X = 8, Y = 2, Z = 7 }, 2, new Material { Color = Color.FromArgb(255, 255, 0), Reflectivity = 0 });
@@ -133,13 +133,13 @@ namespace Controller
                 new double[] { 0, 0, 1 }
             };
             double[] linearFormVector2 = new double[] { 0, 0, 0 };
-            double absoluteTerm2 = -0.6;
-            //Scene.AddQuadricSurface(quadricFormMatrix2, linearFormVector2, absoluteTerm2, new Material { Color = Color.FromArgb(255, 0, 0), Reflectivity = 1 });
+            double absoluteTerm2 = -1.6;
+            //Scene.AddQuadricSurface(quadricFormMatrix2, linearFormVector2, absoluteTerm2, new Material { Color = Color.FromArgb(0, 0, 0), Reflectivity = 0, Refractivity = 0.9, RefractiveIndex = 1.52 });
 
             //Scene.AddSphere(new XYZ { X = -2.5, Y = 0, Z = -10 }, 2, new Material { Color = Color.FromArgb(0, 205, 255), Reflectivity = 0 });
             //Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, 3, new Material { Color = Color.FromArgb(0, 100, 200), Refractivity = 0.8, RefractiveIndex = 1.33 });
-            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 1, Refractivity = 0, RefractiveIndex = 1.52 });
-            Scene.AddSphere2(new XYZ { X = 3, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(255, 0, 0), Reflectivity = 1, Refractivity = 0, RefractiveIndex = 1.52 });
+            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 2, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 0.1, Refractivity = 0, RefractiveIndex = 1.52 });
+            //Scene.AddSphere2(new XYZ { X = 3, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(255, 0, 0), Reflectivity = 1, Refractivity = 0, RefractiveIndex = 1.52 });
             //Scene.AddSphere2(new XYZ { X = 2, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0, Refractivity = 0.7, RefractiveIndex = 1.52 });
             //Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 3, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 1, Refractivity = 0.7, RefractiveIndex = 1.52 });
 
@@ -353,7 +353,7 @@ namespace Controller
                 var left_v = view_v.OuterProduct(up_v).Normalize();
                 if (cameraMoveForward)
                 {
-                    eye_p = eye_p.Add(view_v.Product(cameraSpeed)); // умножать на промежуток времени
+                    eye_p = eye_p.Add(view_v.Product(cameraSpeed)); // TODO умножать на промежуток времени
                 }
                 if (cameraMoveBackward)
                 {
@@ -375,6 +375,22 @@ namespace Controller
                 {
                     eye_p = eye_p.Substract(up_v.Product(cameraSpeed));
                 }
+
+                mouseDeltaX = Cursor.Position.X - mouseDefaultLocation.X;
+                mouseDeltaY = Cursor.Position.Y - mouseDefaultLocation.Y;
+                Cursor.Position = mouseDefaultLocation;
+
+                if (mouseDeltaY != 0)
+                {
+                    view_v = view_v.RotateFromAxis((float)-mouseDeltaY / 1000, left_v);
+                    up_v = up_v.RotateFromAxis((float)-mouseDeltaY / 1000, left_v);
+                }
+                if (mouseDeltaX != 0)
+                {
+                    view_v = view_v.RotateFromAxis((float)mouseDeltaX / 1000, new XYZ() { X = 0, Y = 1, Z = 0});
+                    up_v = up_v.RotateFromAxis((float)mouseDeltaX / 1000, new XYZ() { X = 0, Y = 1, Z = 0 });
+                }
+
                 toolStripStatusLabelCoords.Text = "x:" + eye_p.X.ToString("F1") + " y:" + eye_p.Y.ToString("F1") + " z:" + eye_p.Z.ToString("F1");
             }
             if (toolStripProgressBar1.Visible)
@@ -411,13 +427,7 @@ namespace Controller
 
         private void FormController_MouseMove(object sender, MouseEventArgs e)
         {
-            if (realTimeOn)
-            {
-                //var deltaX = e.X - mouseDefaultLocation.X;
-                //var deltaY = e.Y - mouseDefaultLocation.Y;
-                //view_v = view_v.RotateX(deltaX * cameraRotationSpeed);
-                //view_v = view_v.RotateX(deltaX * cameraRotationSpeed);
-            }
+
         }
     }
 }

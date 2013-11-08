@@ -130,12 +130,35 @@ namespace DataStructure
 
         public XYZ Transform(double[][] matrix)
         {
-            return new XYZ
+            if (matrix.Length == 4)
             {
-                X = matrix[0][0] * this.X + matrix[0][1] * this.Y + matrix[0][2] * this.Z + matrix[0][3],
-                Y = matrix[1][0] * this.X + matrix[1][1] * this.Y + matrix[1][2] * this.Z + matrix[1][3],
-                Z = matrix[2][0] * this.X + matrix[2][1] * this.Y + matrix[2][2] * this.Z + matrix[2][3]
+                return new XYZ
+                {
+                    X = matrix[0][0] * this.X + matrix[0][1] * this.Y + matrix[0][2] * this.Z + matrix[0][3],
+                    Y = matrix[1][0] * this.X + matrix[1][1] * this.Y + matrix[1][2] * this.Z + matrix[1][3],
+                    Z = matrix[2][0] * this.X + matrix[2][1] * this.Y + matrix[2][2] * this.Z + matrix[2][3]
+                };
+            }
+            else
+            {
+                return new XYZ
+                {
+                    X = matrix[0][0] * this.X + matrix[0][1] * this.Y + matrix[0][2] * this.Z,
+                    Y = matrix[1][0] * this.X + matrix[1][1] * this.Y + matrix[1][2] * this.Z,
+                    Z = matrix[2][0] * this.X + matrix[2][1] * this.Y + matrix[2][2] * this.Z
+                };
+            }
+
+        }
+
+        public XYZ RotateFromAxis(float angle, XYZ axis)
+        {
+            var matrix = new double[][] {
+                new double[] { Math.Cos(angle) + (1 - Math.Cos(angle)) * axis.X, (1 - Math.Cos(angle)) * axis.X * axis.Y - Math.Sin(angle) * axis.Z, (1 - Math.Cos(angle)) * axis.X * axis.Z + Math.Sin(angle) * axis.Y},
+                new double[] { (1 - Math.Cos(angle)) * axis.Y * axis.X + Math.Sin(angle) * axis.Z, Math.Cos(angle) + (1 - Math.Cos(angle)) * axis.Y, (1 - Math.Cos(angle)) * axis.Y * axis.Z - Math.Sin(angle) * axis.X},
+                new double[] { (1 - Math.Cos(angle)) * axis.Z * axis.X - Math.Sin(angle) * axis.Y, (1 - Math.Cos(angle)) * axis.Z * axis.Y + Math.Sin(angle) * axis.X, Math.Cos(angle) + (1 - Math.Cos(angle)) * axis.Z} 
             };
+            return this.Transform(matrix);
         }
 
         public XYZ RotateX(float angle)
@@ -146,6 +169,6 @@ namespace DataStructure
         public XYZ RotateY(float angle)
         {
             return null;
-        }
+        } 
     }
 }

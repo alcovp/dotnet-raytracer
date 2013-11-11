@@ -65,28 +65,15 @@ namespace DataStructure
                     XYZ reflectedRay = null;
                     XYZ refractedRay = null;
                     // найдем нормаль в точке пересечения
+                    normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Z = F3(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2 }.Normalize();
+
+                    // найдем направление отраженного луча
+                    reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal)));
                     if (Material.Reflectivity > 0 || Material.Refractivity > 0)
                     {
-                        normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
-                        var normal1 = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2, Z = F3(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * 2 }.Normalize();
+                        //normal = new XYZ { X = F1(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Y = F2(intersectionPoint.X, intersectionPoint.Y, intersectionPoint.Z) * -2, Z = 1 }.Normalize();
                         
                         //normal = new XYZ { X = f1 * -2, Y = f2 * -2, Z = 1 }.Normalize();
-                        // найдем направление отраженного луча
-                        if (Material.Reflectivity > 0)
-                        {
-                            //reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal))).Normalize();
-                            //http://graphics.stanford.edu/courses/cs148-10-summer/docs/2006--degreve--reflection_refraction.pdf
-                            var x = ray.ScalarProduct(normal);
-                            if (x >= 0)
-                            {
-
-                            }
-                            else
-                            {
-
-                            }
-                            reflectedRay = ray.Substract(normal.Product(2).Product(ray.ScalarProduct(normal)));
-                        }
                         // найдем направление преломленного луча
                         if (Material.Refractivity > 0)
                         {
@@ -101,7 +88,7 @@ namespace DataStructure
                                 var sineSqr = Math.Pow(n1 / n2, 2) * (1 - Math.Pow(cosine, 2));
                                 if (Math.Sqrt(sineSqr) <= n2 / n1)
                                 {
-                                    refractedRay = ray.Product(n1 / n2).Add(normal.Product((n1 / n2) * cosine + Math.Sqrt(1 - sineSqr))).Normalize();
+                                    refractedRay = ray.Product(n1 / n2).Add(normal.Product((n1 / n2) * cosine + Math.Sqrt(1 + sineSqr))).Normalize();
                                 }
                                 else
                                 {

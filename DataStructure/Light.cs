@@ -23,16 +23,14 @@ namespace DataStructure
             }
             else
             {
-                if (normal != null)
+                var point_light = Center.Substract(point).Normalize();
+                var cosine = point_light.ScalarProduct(normal); // чет не пашет, как надо
+                if (cosine < 0)
                 {
-                    var eye_point = eye_p.Substract(point).Normalize();
-                    var cosine = normal.OuterProduct(eye_point).OuterProduct(normal).ScalarProduct(eye_point); // чет не пашет, как надо
-                    if (cosine > 1 || cosine < 0)
-                    {
-
-                    }
+                    cosine = 0;
                 }
                 var lightFactor = /*Weight / Math.Pow(distance, 2);*/ (Weight - distance) * 1 / Weight;
+                lightFactor = /*Weight / Math.Pow(distance, 2);*/ ((Weight - distance) * 1 / Weight) * cosine ;
                 if (lightFactor > 1)
                 {
                     lightFactor = 1;

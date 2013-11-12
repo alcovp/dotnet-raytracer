@@ -140,7 +140,7 @@ namespace Controller
             //Scene.AddPlain(new XYZ { X = 0, Y = 1, Z = 0 }, 3, new Material { Color = Color.FromArgb(0, 100, 200), Refractivity = 0.8, RefractiveIndex = 1.33 });
             //Scene.AddSphere2(new XYZ { X = 0, Y = -3, Z = 0 }, 2, new Material { Color = Color.FromArgb(255, 255, 0), Reflectivity = 0.6, Refractivity = 0, RefractiveIndex = 1.52 });
             Scene.AddSphere2(new XYZ { X = 3.5, Y = 2, Z = 3.5 }, 1.5, new Material { Color = Color.FromArgb(12, 173, 43), Reflectivity = 0.8, Refractivity = 0, RefractiveIndex = 1.52 });
-            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 2, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 0, Refractivity = 0.5, RefractiveIndex = 1.33 });
+            Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 2, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 0, Refractivity = 0.5, RefractiveIndex = 1.52 });
             //Scene.AddSphere2(new XYZ { X = 2, Y = 0, Z = 5 }, 1, new Material { Color = Color.FromArgb(0, 255, 0), Reflectivity = 0, Refractivity = 0.7, RefractiveIndex = 1.52 });
             //Scene.AddSphere2(new XYZ { X = 0, Y = 0, Z = 0 }, 3, new Material { Color = Color.FromArgb(255, 255, 255), Reflectivity = 1, Refractivity = 0.7, RefractiveIndex = 1.52 });
 

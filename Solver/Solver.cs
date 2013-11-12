@@ -78,7 +78,7 @@ namespace Solver
             else
             {
                 // вход в новый объект
-                if (result.Container != null)
+                if (result.Container != null && result.Material.Refractivity > 0 && result.Material.RefractiveIndex != 0)
                 {
                     containingObjects.Add(result.Container);
                     n2 = result.Container.GetRefractionIndex();

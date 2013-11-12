@@ -84,15 +84,15 @@ namespace DataStructure
                             }
                             else
                             {
-                                var cosine = ray.ScalarProduct(normal);
+                                var cosine = -normal.ScalarProduct(ray);
                                 var sineSqr = Math.Pow(n1 / n2, 2) * (1 - Math.Pow(cosine, 2));
-                                if (Math.Sqrt(sineSqr) <= n2 / n1)
+                                if (sineSqr > 1)
                                 {
-                                    refractedRay = ray.Product(n1 / n2).Add(normal.Product((n1 / n2) * cosine + Math.Sqrt(1 + sineSqr))).Normalize();
+                                   
                                 }
                                 else
                                 {
-
+                                    refractedRay = ray.Product(n1 / n2).Add(normal.Product((n1 / n2) * cosine - Math.Sqrt(1 - sineSqr))).Normalize();
                                 }
                             }
                             //else
